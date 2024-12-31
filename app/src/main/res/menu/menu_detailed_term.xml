@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Saved Term"
+        android:id="@+id/termSave"/>
+
+    <item android:title="Share"
+        android:id="@+id/termShare"
+        />
+    <item android:id="@+id/termDelete"
+        android:title="Term Delete"/>
+
+</menu>
