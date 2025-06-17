@@ -1,132 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".UI.DetailedCourses">
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <TextView
-            android:id="@+id/courseViewList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:layout_weight="1"
-            android:text="TextView" />
-
-        <EditText
-            android:id="@+id/courseNameEditTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="Course Name"
-            />
-
-
-        <TextView
-            android:id="@+id/courseViewList1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:layout_weight="1"
-            android:text="TextView" />
-
-        <EditText
-            android:id="@+id/courseIdEditTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="Course ID"
-            />
-
-        <EditText
-            android:id="@+id/startDateEditTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="Enter the start date"/>
-
-        <EditText
-            android:id="@+id/EndDateEditTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="Enter the end date"/>
-
-        <EditText
-            android:id="@+id/dCourseStatusEditTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="Course status"/>
-
-        <EditText
-            android:id="@+id/dCourseAssesEditTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="Assesments"/>
-
-        <EditText
-            android:id="@+id/dCnotesEditTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="Enter any notes"/>
-
-        <EditText
-            android:id="@+id/dCourseInfoEditTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="Course Information"/>
-
-        <EditText
-            android:id="@+id/dCourseInsturcIdEditTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint=""/>
-
-        <EditText
-            android:id="@+id/dCourseInstructorNameEditTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="Instrutor Id                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   "/>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/detailedCourseRecyView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:layout_marginBottom="36dp">
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <Button
-            android:id="@+id/removeCourseBtnDetailed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Remove Course" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="16dp">
 
+
+
+            <EditText
+                android:id="@+id/courseIdEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Course ID"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:inputType="none"
+                android:layout_marginTop="36dp"/>
+
+            <EditText
+                android:id="@+id/courseNameEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Course Name" />
+
+            <EditText
+                android:id="@+id/startDateEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter the start date" />
+
+            <EditText
+                android:id="@+id/endDateEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter the end date" />
+
+
+            <EditText
+                android:id="@+id/dCoursePhoneEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Instructor Phone" />
+
+
+
+            <EditText
+                android:id="@+id/dCnotesEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter any notes" />
+
+            <EditText
+                android:id="@+id/dCourseInfoEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Course Information" />
+
+
+
+            <EditText
+                android:id="@+id/dCourseInstructorNameEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Instructor Name" />
+
+            <EditText
+                android:id="@+id/dCourseEmailEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Instructor Email" />
+
+
+            <Spinner
+                android:id="@+id/courseStatusSpinner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
+
+            <Spinner
+                android:id="@+id/courseSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/assessmentRecyView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"></androidx.recyclerview.widget.RecyclerView>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detailedCourseRecyView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp" />
+
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionBtnDetailedCourse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:srcCompat="@drawable/baseline_add_24" />
         </LinearLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionBtnDetailedCourse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            app:srcCompat="@drawable/baseline_add_24" />
-    </LinearLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

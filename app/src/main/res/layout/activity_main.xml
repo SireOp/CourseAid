@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
 
 
     android:layout_width="match_parent"
@@ -10,16 +10,16 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
 
-        android:layout_height="192dp"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="192dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:toolbarId="@+id/toolbar"
+            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
 
-            app:contentScrim="?attr/colorPrimary"/>
+            app:toolbarId="@+id/toolbar" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -38,70 +38,100 @@
 
             <TextView
                 android:id="@+id/headerTextview"
-                android:layout_width="351dp"
-                android:layout_height="59dp"
-                android:layout_marginTop="179dp"
-                android:layout_marginBottom="32dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="30dp"
                 android:fontFamily="sans-serif-black"
                 android:text="Create a course or build a term"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/courseImg"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.26" />
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/assessmentBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="118dp"
+                android:layout_marginBottom="10dp"
+                android:text="Assessments"
+                app:layout_constraintBottom_toTopOf="@+id/termImg"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/termBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="282dp"
-                android:text="Create a term"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="114dp"
+                android:text="Terms"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+                app:layout_constraintStart_toStartOf="@+id/assessmentBtn"
                 app:layout_constraintTop_toBottomOf="@+id/termImg" />
 
             <Button
                 android:id="@+id/courseBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="34dp"
-                android:text="Create a course"
-                app:layout_constraintBottom_toTopOf="@+id/termImg"
-                app:layout_constraintStart_toStartOf="@+id/termBtn"
-                app:layout_constraintTop_toBottomOf="@+id/courseImg" />
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="26dp"
+                android:text="Courses"
+                app:layout_constraintBottom_toTopOf="@+id/assessmentImg"
+                app:layout_constraintStart_toStartOf="@+id/assessmentBtn" />
 
             <ImageView
                 android:id="@+id/termImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="7dp"
+                android:layout_marginEnd="32dp"
                 android:src="@drawable/baseline_calendar_month_24"
                 app:layout_constraintBottom_toTopOf="@+id/termBtn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/courseBtn" />
+                app:layout_constraintEnd_toEndOf="@+id/termBtn"
+                app:layout_constraintTop_toBottomOf="@+id/assessmentImg" />
 
             <ImageView
                 android:id="@+id/courseImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="9dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="73dp"
+                android:layout_marginBottom="74dp"
                 android:src="@drawable/course_img_24"
-                app:layout_constraintBottom_toTopOf="@+id/courseBtn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/headerTextview" />
+                app:layout_constraintBottom_toTopOf="@+id/assessmentImg"
+                app:layout_constraintStart_toStartOf="@+id/courseBtn"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
                 android:layout_width="360dp"
                 android:layout_height="0dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="168dp"
+                android:layout_marginEnd="9dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/termBtn" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="termBtn"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/assessmentImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="58dp"
+                app:layout_constraintBottom_toTopOf="@+id/termImg"
+                app:layout_constraintEnd_toEndOf="@+id/termImg"
+                app:layout_constraintStart_toStartOf="@+id/termImg"
+                app:layout_constraintTop_toBottomOf="@+id/courseImg"
+                app:srcCompat="@drawable/baseline_chair_alt_24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

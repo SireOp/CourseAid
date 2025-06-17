@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Add intial Term/Course"
-        android:id="@+id/addIntTermCourse"/>
-    <item android:title="Item"
-        android:id="@+id/item"/>
+
+
+    <item android:title="Save Term"
+        android:id="@+id/saveTerm"/>
+
+    <item android:title="Delete Term"
+        android:id="@+id/deleteTerm"/>
 
 </menu>

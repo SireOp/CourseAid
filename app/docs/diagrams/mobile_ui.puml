@@ -1,0 +1,504 @@
+@startuml mobile_ui
+title MyCourse Mobile App
+
+package "com.example.myCourse.dao" {
+     interface AssessmentDAO <<Dao>> {
+        + void insert(Assessment assessment)
+        + void update(Assessment assessment)
+        + void delete(Assessment assessment)
+        + void deleteAllAssessments()
+        + List<Assessment> getAllAssessment()
+        + List<Assessment> getAllRelatedAssessment(int courseId)
+        + Assessment getAssessmentByCourseId(int courseId)
+      }
+       interface CourseDAO <<Dao>> {
+          + void insert(Course course)
+          + void update(Course course)
+          + void delete(Course course)
+          + void deleteAllCourses()
+          + List<Course> getAllCourse()
+          + List<Course> getRelatedCourse(int termId)
+          + List<Course> getAllRelatedCourses(int termId)
+        }
+
+class DSM {
+    - Repository repository
+    - Gson gson
+    + DSM(Application app)
+    + void syncAllData(Runnable onFinished)
+    + void importDataFromServer(Runnable onFinished)
+  }
+
+   interface InstructorDAO <<Dao>> {
+      + void insert(Instructor instructor)
+      + void update(Instructor instructor)
+      + void delete(Instructor instructor)
+      + void deleteAllInstructors()
+      + List<Instructor> getAllInstructors()
+    }
+
+ interface StudentDAO <<Dao>> {
+    + void insert(Student student)
+    + void update(Student student)
+    + void delete(Student student)
+    + void deleteAllStudents()
+    + List<Student> getAllStudents()
+    + List<Student> getAllEnrolledStudents(int courseId)
+  }
+interface TermDAO <<Dao>> {
+    + void insert(Term term)
+    + void update(Term term)
+    + void delete(Term term)
+    + void deleteAllterms()
+    + List<Term> getAllTerm()
+    + List<Course> getTAllRelatedCourses(Integer termId)
+    + List<Course> getAllRelCourses(int courseId)
+    + Term getTermById(Integer id)
+  }
+}
+
+package com.example.myCourse.entities {
+
+  class Assessment <<Entity>> {
+    - int assessmentId
+    - String assessmentTitle
+    - String type
+    - LocalDate startDate
+    - LocalDate endDate
+    - int courseId
+
+    + Assessment(int assessmentId, String assessmentTitle, String type, LocalDate startDate, LocalDate endDate, int courseId)
+    + int getAssessmentId()
+    + void setAssessmentId(int assessmentId)
+    + String getAssessmentTitle()
+    + void setAssessmentTitle(String assessmentTitle)
+    + String getType()
+    + void setType(String type)
+    + LocalDate getStartDate()
+    + void setStartDate(LocalDate startDate)
+    + LocalDate getEndDate()
+    + void setEndDate(LocalDate endDate)
+    + int getCourseId()
+    + void setCourseId(int courseId)
+    + String toString()
+  }
+
+    class Course <<Entity>> {
+      - String startDateString {transient}
+      - String endDateString {transient}
+      - int courseId
+      - String title
+      - LocalDate startDate
+      - LocalDate endDate
+      - String status
+      - String notes
+      - String courseInfo
+      - String instructorName
+      - String phone
+      - String email
+      - Integer termId
+
+      + Course(Integer courseId, String title, LocalDate startDate, LocalDate endDate, String status, String notes, String courseInfo, String instructorName, String phone, String email, Integer termId)
+      + Course(int courseId, String s, String o) <<Ignore>>
+
+      + String getInstructorName()
+      + void setInstructorName(String instructorName)
+      + String getPhone()
+      + void setPhone(String phone)
+      + String getEmail()
+      + void setEmail(String email)
+      + String getNotes()
+      + void setNotes(String notes)
+      + int getCourseId()
+      + void setCourseId(int courseId)
+      + String getTitle()
+      + void setTitle(String title)
+      + LocalDate getStartDate()
+      + void setStartDate(LocalDate startDate)
+      + LocalDate getEndDate()
+      + void setEndDate(LocalDate endDate)
+      + String getStatus()
+      + void setStatus(String status)
+      + Integer getTermId()
+      + void setTermId(Integer termId)
+      + String getCourseInfo()
+      + void setCourseInfo(String courseInfo)
+      + String getStartDateString()
+      + void setStartDateString(String startDateString)
+      + String getEndDateString()
+      + void setEndDateString(String endDateString)
+      + String toString()
+    }
+ class Student <<Entity>> {
+    - String startDateString {transient}
+    - String endDateString {transient}
+    - Integer studentId
+    - String studentName
+    - String address
+    - String phone
+    - String grade
+    - int courseId
+
+    + Student(Integer studentId, String studentName, String address, String phone, String grade, int courseId)
+    + Integer getStudentId()
+    + void setStudentId(Integer studentId)
+    + String getStudentName()
+    + void setStudentName(String studentName)
+    + String getAddress()
+    + void setAddress(String address)
+    + String getPhone()
+    + void setsPhone(String phone)
+    + String getGrade()
+    + void setGrade(String grade)
+    + int getCourseId()
+    + void setCourseId(int courseId)
+    + String toString()
+  }
+
+   class Term <<Entity>> {
+      - String startDateString {transient}
+      - String endDateString {transient}
+      - Integer termId
+      - String termName
+      - LocalDate startDate
+      - LocalDate endDate
+
+      + Term(Integer termId, String termName, LocalDate startDate, LocalDate endDate)
+      + Term(Integer termId, String termName) <<Ignore>>
+
+      + Integer getTermId()
+      + void setTermId(Integer termId)
+      + String getTermName()
+      + void setTermName(String termName)
+      + LocalDate getStartDate()
+      + void setStartDate(LocalDate startDate)
+      + LocalDate getEndDate()
+      + void setEndDate(LocalDate endDate)
+      + String getStartDateString()
+      + void setStartDateString(String startDateString)
+      + String getEndDateString()
+      + void setEndDateString(String endDateString)
+      + String toString()
+    }
+
+
+
+}
+
+
+
+
+package "com.example.myCourse.network" {
+class ApiClient {
+    {static}- BASE_URL: String = "http://192.168.1.140:3000"
+    {static}- retrofit: Retrofit
+    {static}+ getClient(): Retrofit
+}
+interface ApiService {
+        +sendData(data: java.util.Map<String, Object>): retrofit2.Call<Void>
+        +getData(): retrofit2.Call<com.google.gson.JsonObject>
+    }
+
+}
+
+package "com.example.myCourse.database" {
+    class Repository{
+    -mTermDAO: TermDAO
+        -mCourseDAO: CourseDAO
+        -mInstructorDAO: InstructorDAO
+        -mAssessmentDAO: AssessmentDAO
+        -mStudentDAO: StudentDAO
+        -mAllTerms: java.util.List<Term>
+        -mAllCourses: java.util.List<Course>
+        -mAllInstructors: java.util.List<Instructor>
+        -mAllAssessments: java.util.List<Assessment>
+        -mAllStudents: java.util.List<Student>
+        {static} -NUMBER_OF_THREADS: int = 4
+        {static} -databaseExecutor: java.util.concurrent.ExecutorService
+
+        +Repository(application: android.app.Application)
+        +getAllCourses(): java.util.List<Course>
+        +getCoursesByTermId(termId: Integer): java.util.List<Course>
+        +insert(course: Course): void
+        +update(course: Course): void
+        +delete(course: Course): void
+        +deleteAllCourses(): void
+
+        +getAllTerms(): java.util.List<Term>
+        +insert(term: Term): void
+        +delete(term: Term): void
+        +deleteAllTerms(): void
+        +update(term: Term): void
+
+        +getAllInstructors(): java.util.List<Instructor>
+        +insert(instructor: Instructor): void
+        +deleteAllInstructors(): void
+        +update(instructor: Instructor): void
+
+        +getmAllAssessments(): java.util.List<Assessment>
+        +getAssessmentByCourseId(courseId: int): Assessment
+        +getAllRelatedAssessment(courseId: int): java.util.List<Assessment>
+        +insert(assessment: Assessment): void
+        +update(assessment: Assessment): void
+        +deleteAllAssessments(): void
+
+        +getAllStudents(): java.util.List<Student>
+        +getAllEnrolledStudents(courseId: int): java.util.List<Student>
+        +insert(student: Student): void
+        +update(student: Student): void
+        +deleteAllStudents(): void
+      }
+   class Task2DatabaseBuilder <<RoomDatabase>> {
+       - static volatile Task2DatabaseBuilder INSTANCE
+       + abstract CourseDAO courseDAO()
+       + abstract TermDAO termDAO()
+       + abstract InstructorDAO instructorDAO()
+       + abstract AssessmentDAO assessmentDAO()
+       + abstract StudentDAO studentDAO()
+       + static Task2DatabaseBuilder getDatabase(Context context)
+     }
+
+     interface CourseDAO
+     interface TermDAO
+     interface InstructorDAO
+     interface AssessmentDAO
+     interface StudentDAO
+
+     class Course <<Entity>>
+     class Instructor <<Entity>>
+     class Term <<Entity>>
+     class Assessment <<Entity>>
+     class Student <<Entity>>
+
+     class LDConverter <<TypeConverter>>
+
+     Task2DatabaseBuilder --> CourseDAO
+     Task2DatabaseBuilder --> TermDAO
+     Task2DatabaseBuilder --> InstructorDAO
+     Task2DatabaseBuilder --> AssessmentDAO
+     Task2DatabaseBuilder --> StudentDAO
+
+     Task2DatabaseBuilder ..> LDConverter : @TypeConverters
+
+     CourseDAO ..> Course
+     TermDAO ..> Term
+     InstructorDAO ..> Instructor
+     AssessmentDAO ..> Assessment
+     StudentDAO ..> Student
+}
+
+
+
+package "com.example.myCourse.UI" {
+  class MainActivity{
+      #onCreate(savedInstanceState: android.os.Bundle): void
+
+
+  }
+  class Terms{
+    +onOptionsItemSelected(item: android.view.MenuItem): boolean
+    -validateAndSave(name: String, start: String, end: String): void
+    -isValidDate(startStr: String, endStr: String): LocalDate
+    +onCreateOptionsMenu(menu: android.view.Menu): boolean
+    #onCreate(savedInstanceState: android.os.Bundle): void
+    #onResume(): void
+    -setupCourseSpinner(allCourses: java.util.List<Course>): void
+    -showDatePickerDialog(isStartDate: boolean): void
+    -refreshRecyclerView(): void
+    -deleteTerm(): void
+  }
+  class Courses{
+    +onOptionsItemSelected(item: android.view.MenuItem): boolean
+    -validateAndSave(name: String, start: String, end: String): void
+    -isValidDate(startStr: String, endStr: String): LocalDate
+    +onCreateOptionsMenu(menu: android.view.Menu): boolean
+    #onCreate(savedInstanceState: android.os.Bundle): void
+    #onResume(): void
+    -setupCourseSpinner(allCourses: java.util.List<Course>): void
+    -showDatePickerDialog(isStartDate: boolean): void
+    -refreshRecyclerView(): void
+    -deleteCourse(): void
+  }
+  class Assessments{
+    #onCreate(savedInstanceState: android.os.Bundle): void
+    +onOptionsItemSelected(item: android.view.MenuItem): boolean
+    -seeDatePickerDialog(isStartDate: boolean): void
+    -refreshRecyclerView(): void
+    +onCreateOptionsMenu(menu: android.view.Menu): boolean
+    +onOptionsItemSelected(item: android.view.MenuItem): boolean
+    -saveAssessments(): void
+    -scheduleAlarms(title: String, start: LocalDate, end: LocalDate): void
+    #onResume(): void
+
+
+
+  }
+  class DetailedTerms{
+    #onCreate(savedInstanceState: android.os.Bundle): void
+    +onOptionsItemSelected(item: android.view.MenuItem): boolean
+    -validateAndSave(name: String, start: String, end: String): void
+    -isValidDate(startStr: String, endStr: String): LocalDate
+    +onCreateOptionsMenu(menu: android.view.Menu): boolean
+    #onResume(): void
+    -setupCourseSpinner(allCourses: java.util.List<Course>): void
+    -showDatePickerDialog(isStartDate: boolean): void
+    -refreshRecyclerView(): void
+    -deleteTerm(): void
+  }
+
+  class DetailedCourses{
+
+  +onOptionsItemSelected(item: android.view.MenuItem): boolean
+      -validateAndSave(name: String, start: String, end: String): void
+      -isValidDate(startStr: String, endStr: String): LocalDate
+      +onCreateOptionsMenu(menu: android.view.Menu): boolean
+        #onCreate(savedInstanceState: android.os.Bundle): void
+        #onResume(): void
+      -setupCourseSpinner(allCourses: java.util.List<Course>): void
+      -showDatePickerDialog(isStartDate: boolean): void
+      -refreshRecyclerView(): void
+      -deleteCourse(): void
+
+  }
+  class DetailedAssessments{
+  +onOptionsItemSelected(item: android.view.MenuItem): boolean
+  -scheduleAssessmentNotification(isStart: boolean): void
+  -refreshRecyclerView(): void
+  -seeDatePickerDialog(isStartDate: boolean): void
+  +onAssessmentClick(assessment Assessment)
+  +onCreateOptionsMenu(menu: android.view.Menu): boolean
+  +onBackPressed():
+
+  }
+  class MyReceiver{
+  +onReceive(Context context, Intent intent): void
+  -createNotificationChannel(context context, channelID: String): void
+
+
+  }
+
+
+  class TermAdapter <<RecyclerView.Adapter>> {
+      - List<Term> mTerm
+      - List<Course> mCourse
+      - Context context
+      - LayoutInflater mInflater
+      - OnTermClickListener listener
+
+      + TermAdapter(Context context, List<Term> mTerm, List<Course> mCourse, OnTermClickListener listener)
+      + TermViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+      + void onBindViewHolder(TermViewHolder holder, int position)
+      + int getItemCount()
+      + void updateData(List<Term> terms, List<Course> courses)
+      + void setTerms(List<Term> terms)
+      + void setCourses(List<Course> courses)
+    }
+
+    interface OnTermClickListener {
+      + void OnTermClick(Term term, Course course)
+    }
+
+    class TermViewHolder <<RecyclerView.ViewHolder>> {
+      - TextView termViewList
+      - TextView termViewList1
+      + TermViewHolder(View itemView, OnTermClickListener listener, List<Term> mTerm, List<Course> mCourse)
+    }
+
+
+
+
+
+
+  class CourseAdapter {
++CourseAdapter(context: Context, mCourse: java.util.List<Course>, mAssessment: java.util.List<Assessments>, listener: OnCourseClickListener)
++CourseViewHolder(itemView: android.view, listener: OnCourseClickListener, mCourse: java.util.List<Course>, mAssessment: java.util.List<Assessment>)
++onTermClickListener(term: Term, course: Course): void
++onCreateViewHolder(parent: android.view.ViewGroup, viewType: int): CourseAdapter.CourseViewHolder)
++TermViewHolder(itemView: android.view.View, mCourse: java.util.List<Course>, )
++onBindViewHolder(holder: CourseAdapter.CourseViewHolder, position: int): void
++getItemCount(): int
++setCourses(courses: java.util.List<Course>): void
+
+    +OnCourseClickListener
+  }
+  interface OnCourseClickListener
+
+ class AssessmentAdapter <<RecyclerView.Adapter>> {
+     - List<Assessment> mAssessment
+     - OnAssessmentClickListener listener
+     - Context context
+     - LayoutInflater mInflater
+
+     + AssessmentAdapter(Context context, List<Assessment> mAssessment, OnAssessmentClickListener listener)
+     + AssessmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+     + void onBindViewHolder(AssessmentViewHolder holder, int position)
+     + int getItemCount()
+     + void setAssessments(List<Assessment> assessments)
+
+     interface OnAssessmentClickListener {
+       + void onAssessmentClick(Assessment assessment)
+     }
+
+     class AssessmentViewHolder <<RecyclerView.ViewHolder>> {
+       - TextView assessmentViewList
+       + AssessmentViewHolder(View itemView, OnAssessmentClickListener listener, List<Assessment> mAssessment)
+     }
+
+  interface OnAssessmentClickListener
+}
+
+package com.example.myCourse.utils {
+
+  class LDConverter <<Utility>> {
+    - DateTimeFormatter dtf {static}
+    + static LocalDate fromString(String value)
+    + static String toString(LocalDate date)
+  }
+
+  class LocalDateAdapter <<TypeAdapter<LocalDate>>> {
+    - DateTimeFormatter formatter
+    + void write(JsonWriter out, LocalDate value)
+    + LocalDate read(JsonReader in)
+  }
+
+
+
+' Activity navigation
+MainActivity --> Terms
+MainActivity --> Courses
+MainActivity -->  Assessments
+Terms --> DetailedTerms
+Courses --> DetailedCourses
+Assessments --> DetailedAssessments
+
+
+
+' RecyclerView adapters
+Terms           --> TermAdapter             : uses
+TermAdapter     --> OnTermClickListener     : <<interface>>
+Courses         --> CourseAdapter           : uses
+CourseAdapter   --> OnCourseClickListener   : <<interface>>
+DetailedTerms   --> TermAdapter             : uses
+DetailedAssessments --> AssessmentAdapter   : uses
+AssessmentAdapter --> OnAssessmentClickListener : <<interface>>
+Assessments --> AssessmentAdapter : uses
+TermAdapter --|> RecyclerViewAdapter
+Assessment --> Course : courseId
+Student --> Course : courseId
+Course --> Term : termId
+class Gson <<external>>
+class Runnable <<functional>>
+DSM --> Repository
+DSM ..> Gson
+DSM ..> ApiService
+DSM ..> ApiClient
+InstructorDAO ..> Instructor
+StudentDAO --> Student
+TermDAO ..> Term
+TermDAO ..> Course
+TermAdapter --> TermViewHolder
+TermAdapter ..> OnTermClickListener
+TermAdapter ..> Term
+TermAdapter ..> Course
+}
+@enduml

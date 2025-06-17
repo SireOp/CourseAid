@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+    <item android:title="Update Assessment"
+        android:id="@+id/updateAssessment1"/>
+
+    <item android:title="Delete Assessment"
+        android:id="@+id/deleteAssessment1"/>
+
+    <item
+        android:id="@+id/notifyAssessmentStart"
+        android:title="Notify Start"
+        android:icon="@drawable/baseline_add_24"
+         />
+
+    <item
+        android:id="@+id/notifyAssessmentEnd"
+        android:title="Notify End"
+        android:icon="@drawable/baseline_add_24"
+         />
+
+</menu>

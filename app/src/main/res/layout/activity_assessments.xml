@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".UI.Assessments">
+
+    <LinearLayout
+        android:id="@+id/lLAssessment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/assessmentIdEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Assessment ID"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="false"
+            android:cursorVisible="false"/>
+
+        <EditText
+            android:id="@+id/assessmentTitleEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Assessment Title"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/startDateEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Select Start Date"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"/>
+
+        <EditText
+            android:id="@+id/endDateTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Select End Date"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false" />
+
+        <Spinner
+            android:id="@+id/typeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"/>
+
+        <Spinner
+            android:id="@+id/assessmentCourseSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/AssessmentRecyView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:nestedScrollingEnabled="true"
+            android:overScrollMode="never"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/assessmentFloatingActionBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="end"
+            android:clickable="true"
+            app:srcCompat="@drawable/baseline_add_24" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

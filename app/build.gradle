@@ -1,19 +1,26 @@
 plugins {
     alias(libs.plugins.android.application)
+
 }
 
 android {
-    namespace 'com.example.task2'
+    namespace 'com.example.myCourse'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.task2"
+        applicationId "com.example.myCourse"
         minSdk 26
         targetSdk 34
         versionCode 1
         versionName "1.0"
 
+        buildConfigField "String", "X_INTERNAL_SECRET", "\"120aaa50332843eb2fa099ca042150dde0879651a881e6efd5130099785551c9fb3fc64029b58dbeb99ff923047bbb43a32f3f1c15e4463d0636ebeb373ae594\""
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+    buildFeatures {
+        buildConfig true
     }
 
     buildTypes {
@@ -27,6 +34,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     buildToolsVersion '34.0.0'
+
+
 }
 
 dependencies {
@@ -57,6 +66,14 @@ dependencies {
 
     // optional - Paging 3 Integration
     implementation "androidx.room:room-paging:2.6.1"
+    // Google used to prep Data for serialization
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    //Retrofit Serialization
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+
 
     implementation libs.appcompat
     implementation libs.material
