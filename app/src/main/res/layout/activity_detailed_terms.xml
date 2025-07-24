@@ -6,7 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.DetailedTerms">
-<ScrollView
+    <ImageView
+        android:id="@+id/backgroundImageDetailedTerms"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/edu4"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <ScrollView
     android:layout_width="0dp"
     android:layout_height="0dp"
     app:layout_constraintTop_toTopOf="parent"
@@ -37,6 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:hint="Term id"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:layout_marginTop="36dp"
             />
 
@@ -45,6 +60,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:hint="Term Name"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             />
 
         <EditText
@@ -52,6 +69,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:hint="Select Start Date"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:cursorVisible="false"></EditText>
@@ -60,6 +79,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:hint="Select End Date"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:cursorVisible="false"></EditText>
@@ -68,6 +89,7 @@
             android:id="@+id/courseSpinner2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#F5F5F5"
             android:layout_marginBottom="8dp" />
 
 

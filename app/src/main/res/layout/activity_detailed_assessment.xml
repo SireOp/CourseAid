@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     tools:context=".UI.DetailedAssessments">
+
+    <ImageView
+        android:id="@+id/backgroundImageDAssessments"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/edu9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    >
 
 
 
@@ -23,6 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Assessment Details"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:gravity="center"
@@ -36,6 +57,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Assessment Title"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
                 android:inputType="textPersonName"
                 android:layout_marginBottom="12dp" />
 
@@ -46,6 +69,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Select Start Date"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:cursorVisible="false"
@@ -56,6 +81,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Select End Date"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:cursorVisible="false"
@@ -65,12 +92,14 @@
                 android:id="@+id/typeSpinner1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#F5F5F5"
                 android:layout_marginBottom="12dp" />
 
             <Spinner
                 android:id="@+id/assessmentCourseSpinner1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#F5F5F5"
                 android:layout_marginBottom="12dp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -95,3 +124,4 @@
         </LinearLayout>
 
 </ScrollView>
+</FrameLayout>

@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     tools:context=".UI.DetailedCourses">
+
+    <ImageView
+        android:id="@+id/backgroundImageDCourse"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/edu5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    >
 
 
 
@@ -25,6 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Course ID"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
                 android:focusable="false"
                 android:clickable="false"
                 android:cursorVisible="false"
@@ -35,26 +56,34 @@
                 android:id="@+id/courseNameEditTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Course Name" />
+                android:hint="Course Name"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"/>
 
             <EditText
                 android:id="@+id/startDateEditTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter the start date" />
+                android:hint="Enter the start date"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"/>
 
             <EditText
                 android:id="@+id/endDateEditTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter the end date" />
+                android:hint="Enter the end date"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"/>
 
 
             <EditText
                 android:id="@+id/dCoursePhoneEditTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Instructor Phone" />
+                android:hint="Instructor Phone"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"/>
 
 
 
@@ -62,13 +91,17 @@
                 android:id="@+id/dCnotesEditTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter any notes" />
+                android:hint="Enter any notes"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF" />
 
             <EditText
                 android:id="@+id/dCourseInfoEditTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Course Information" />
+                android:hint="Course Information"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF" />
 
 
 
@@ -76,27 +109,34 @@
                 android:id="@+id/dCourseInstructorNameEditTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Instructor Name" />
+                android:hint="Instructor Name"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"/>
 
             <EditText
                 android:id="@+id/dCourseEmailEditTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Instructor Email" />
+                android:hint="Instructor Email"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"/>
 
 
             <Spinner
                 android:id="@+id/courseStatusSpinner1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:textColor="#F5F5F5"
+                />
 
 
             <Spinner
                 android:id="@+id/courseSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"
+                android:textColor="#F5F5F5" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/assessmentRecyView"
@@ -123,3 +163,4 @@
         </LinearLayout>
 
 </ScrollView>
+</FrameLayout>

@@ -1,90 +1,114 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     tools:context=".UI.Assessments">
 
-    <LinearLayout
-        android:id="@+id/lLAssessment"
+    <!-- Static background image -->
+    <ImageView
+        android:id="@+id/backgroundImageAssessments"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/edu8" />
 
-        <EditText
-            android:id="@+id/assessmentIdEditTxt"
+    <!-- Scrollable content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/lLAssessment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Assessment ID"
-            android:inputType="none"
-            android:focusable="false"
-            android:clickable="false"
-            android:cursorVisible="false"/>
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <EditText
-            android:id="@+id/assessmentTitleEditTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Assessment Title"
-            android:inputType="text" />
+            <!-- Keep all your views unchanged -->
+            <EditText
+                android:id="@+id/assessmentIdEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Assessment ID"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"/>
 
-        <EditText
-            android:id="@+id/startDateEditTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Select Start Date"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:cursorVisible="false"/>
+            <EditText
+                android:id="@+id/assessmentTitleEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Assessment Title"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/endDateTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Select End Date"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:cursorVisible="false" />
+            <EditText
+                android:id="@+id/startDateEditTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Select Start Date"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:cursorVisible="false"/>
 
-        <Spinner
-            android:id="@+id/typeSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/endDateTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Select End Date"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:cursorVisible="false" />
 
-        <Spinner
-            android:id="@+id/assessmentCourseSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
+            <Spinner
+                android:id="@+id/typeSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#F5F5F5"
+                android:layout_marginTop="16dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/AssessmentRecyView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="8dp"
-            android:nestedScrollingEnabled="true"
-            android:overScrollMode="never"/>
+            <Spinner
+                android:id="@+id/assessmentCourseSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#F5F5F5"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/assessmentFloatingActionBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_gravity="end"
-            android:clickable="true"
-            app:srcCompat="@drawable/baseline_add_24" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/AssessmentRecyView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:nestedScrollingEnabled="true"
+                android:overScrollMode="never"/>
 
-    </LinearLayout>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/assessmentFloatingActionBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="end"
+                android:clickable="true"
+                app:srcCompat="@drawable/baseline_add_24" />
 
-</androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     tools:context=".UI.Courses">
+
+    <ImageView
+        android:id="@+id/backgroundImageCourse"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/edu10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    >
 
 
 
@@ -23,6 +43,7 @@
 
 
 
+
         <EditText
             android:id="@+id/courseIdTxt"
             android:layout_width="wrap_content"
@@ -31,6 +52,8 @@
             android:ems="10"
             android:inputType="none"
             android:hint="Course ID"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:focusable="false"
             android:clickable="false"
             android:cursorVisible="false" />
@@ -42,7 +65,10 @@
             android:layout_marginTop="36dp"
             android:ems="10"
             android:inputType="text"
-            android:hint="Course Name" />
+            android:hint="Course Name"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
+            />
 
 
 
@@ -53,6 +79,8 @@
             android:layout_marginTop="36dp"
             android:ems="10"
             android:hint="Select Start Date"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:cursorVisible="false"/>
@@ -64,6 +92,8 @@
             android:layout_marginTop="36dp"
             android:ems="10"
             android:hint="Select End Date"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:cursorVisible="false"/>
@@ -80,6 +110,8 @@
             android:ems="10"
             android:inputType="text"
             android:hint="Course Notes"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:focusable="true"/>
 
         <EditText
@@ -90,6 +122,8 @@
             android:ems="10"
             android:inputType="text"
             android:hint="Course Info"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:focusable="true"/>
 
         <EditText
@@ -100,6 +134,8 @@
             android:ems="10"
             android:inputType="text"
             android:hint="Instructor Name"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:focusable="true"/>
 
 
@@ -111,6 +147,8 @@
             android:ems="10"
             android:inputType="text"
             android:hint="1+ 555-555-5555"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:focusable="true"/>
 
         <EditText
@@ -121,6 +159,8 @@
             android:ems="10"
             android:inputType="text"
             android:hint="prof@uniy"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:focusable="true"/>
 
 
@@ -129,6 +169,8 @@
             android:id="@+id/courseStatusSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:layout_marginTop="36dp"
             android:spinnerMode="dropdown"/>
 
@@ -137,6 +179,8 @@
             android:id="@+id/courseSpinner1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#F5F5F5"
+            android:textColorHint="#CCFFFFFF"
             android:layout_marginBottom="8dp" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -162,3 +206,4 @@
     </LinearLayout>
 
 </ScrollView>
+</FrameLayout>

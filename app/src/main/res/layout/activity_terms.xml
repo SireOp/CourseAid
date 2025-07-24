@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".UI.Terms">
 
+    <ImageView
+        android:id="@+id/backgroundImageTerms"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/edu8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <!-- Replaced ScrollView with NestedScrollView and enabled fillViewport -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -38,6 +49,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="Term Name"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
                 android:inputType="text" />
 
             <EditText
@@ -46,6 +59,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="Select Start Date"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:cursorVisible="false" />
@@ -56,6 +71,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="Select End Date"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:cursorVisible="false" />
@@ -66,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
+                android:textColor="#F5F5F5"
                 android:spinnerMode="dropdown" />
 
             <TextView
@@ -74,6 +92,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="Course Id"
+                android:textColor="#F5F5F5"
+                android:textColorHint="#CCFFFFFF"
                 android:enabled="false" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton

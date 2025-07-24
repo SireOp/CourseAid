@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:textColor="@android:color/holo_blue_bright"
+        android:textColor="#FFEEDD"
         android:lineSpacingExtra="4dp"
         android:padding="8dp"
         android:id="@+id/termRecyList"/>
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:textColor="@android:color/holo_green_light"
+        android:textColor="#D0ECFF"
         android:lineSpacingExtra="4dp"
         android:padding="8dp"
         android:id="@+id/termRecyList1"/>
