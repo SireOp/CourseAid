@@ -1,3 +1,5 @@
   The MyCourse Companion application is the mobile part of a Multi-Client Sync Architecture. MyCourse is a TypeScript WebApplication, that allows users to Create Courses, Assessments, Terms, then assign courses to a term and assign assignments to courses. Changes made in the mobile application are reflected in the React based Web Application. Data is only sent when a record is created, updated, or deleted (Change-Driven Sync). Changes are stored locally in the Room Database using SQLite, when a change is made, data is sent to the backed (node server) as JSON (Using GSON).
 
   The React based web application implements pulled-based synchronization model, when React detects a change it fetches updated server state on demand. This works for small scale as those testing the application for functionality, performance, where it’s primary users. If scaled up, I would use a Server-Sent Events approach. Where each client subscribes to updates, and when changes are made the server only pushes what was changed. 
+  
+<img width="728" height="1536" alt="image" src="https://github.com/user-attachments/assets/ebae435a-2099-427e-8d5c-0e03b3c86a00" />
